@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <title>Formulario de Registro</title> 
+    <!-- Estilos CSS -->
+    <style>
+        /* Define el estilo para los mensajes de error */
+        .error {
+            color: pink; /* el mensaje de error se mostrara en color rosa */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Título principal de la página -->
+    <h2>Formulario de Registro</h2>
+    <form id="registroForm" onsubmit="return validarFormulario()"> <!-- El evento 'onsubmit' ejecuta la validación antes de enviar el formulario -->
+        <!-- Etiqueta y campo de entrada para el nombre -->
+        <label for="nombre">Nombre:</label> <!-- 'for' vincula la etiqueta con el input de nombre -->
+        <input type="text" id="nombre" name="nombre"> <!-- Campo de entrada para el nombre del usuario -->
+        
+        <!-- Elemento para mostrar el mensaje de error -->
+        <span id="noname" class="error"></span> <!-- Mensaje de error se mostrará aquí si el campo de nombre está vacío -->
+        <br><br> <!-- Salto de línea para crear un espacio entre los elementos del formulario -->
+
+        <!-- Botón de envío del formulario -->
+        <input type="submit" value="Registrar"> <!-- Botón para enviar el formulario -->
+    </form>
+
+    <!-- Script JavaScript para la validación del formulario -->
+    <script>
+        // Función que valida el formulario cuando se intenta enviar
+        function validarFormulario() {
+            var nombre = document.getElementById("nombre").value; // Obtiene el valor del campo 'nombre'
+            var noname = document.getElementById("noname"); // Obtiene el elemento donde se mostrará el mensaje de error
+
+            // Verifica si el campo 'nombre' está vacío o contiene solo espacios en blanco
+            if (nombre.trim() === "") {
+                noname.textContent = "El campo de nombre no puede estar vacío."; // Establece el mensaje de error
+                return false; // Evita el envío del formulario
+            } else {
+                noname.textContent = ""; // Limpia el mensaje de error si el nombre es válido
+                return true; // Permite el envío del formulario
+            }
+        }
+    </script>
+</body>
+</html>
